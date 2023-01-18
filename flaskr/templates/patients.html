@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Patients info
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+
+<td><a class="btn btn-success" style="float: right;" href="/enter_patient">Enter new patient</a></td>
+
+
+<h1>Patients</h1>
+
+
+
+<div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Age</th>
+              <th scope="col"></th>
+            </tr>
+        </thead>
+            <tbody>
+           {% if patients|length > 0%}
+           {%for el in patients%}
+
+            <tr>
+              <td>{{el.id}}</td>
+              <td>{{el.name}}</td>
+              <td>{{el.age}}</td>
+
+              <td><a class="btn btn-warning" href="/patients/{{el.id}}/update">Edit</a></td>
+                <td><a href="/p_deleting/{{el.id}}/del" class="btn btn-danger">Delete</a></td>
+
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+    {% else %}
+    <p>There are no patients. Everybody is healthy :) </p>
+    {% endif %}
+</div>
+    {% endblock %}

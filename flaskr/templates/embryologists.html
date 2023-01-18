@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Embryologists info
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+
+<td><a class="btn btn-success" style="float: right;" href="/enter_embryologist">Enter new embryologist</a></td>
+
+
+<h1>Embryologists</h1>
+
+
+
+<div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Work clinic</th>
+              <th scope="col">Education</th>
+              <th scope="col"></th>
+            </tr>
+        </thead>
+            <tbody>
+           {% if embryologists|length > 0%}
+           {%for person in embryologists%}
+
+
+
+            <tr>
+              <td>{{person.id}}</td>
+              <td>{{person.name}}</td>
+              <td>{{person.work_clinic}}</td>
+              <td>{{person.education}}</td>
+
+              <td><a class="btn btn-warning" href="/embryologists/{{person.id}}/update">Edit</a></td>
+                <td><a href="/e_deleting/{{person.id}}/del" class="btn btn-danger">Delete</a></td>
+
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+    {% else %}
+    <p>Where are all embryologists?</p>
+    {% endif %}
+</div>
+    {% endblock %}

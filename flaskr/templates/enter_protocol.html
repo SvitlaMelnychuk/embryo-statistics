@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Forming a statistics
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Enter new protocol</h1>
+    <form method="post">
+
+
+        <select name="patient_id" class="form-select" aria-label="Default select example">
+           <option selected>Choose the patient from select menu:</option>
+            {%for patient in patients%}
+          <option value="{{patient.id}}">{{patient.name}}</option>
+            {% endfor %}
+        </select><br>
+
+        <select name="embryologist_id" class="form-select" aria-label="Default select example">
+            <option selected>Choose the embryologist from select menu:</option>
+            {%for embryologist in embryologists%}
+          <option value="{{embryologist.id}}">{{embryologist.name}}</option>
+            {% endfor %}
+        </select><br>
+
+        <select name="doctor_id" class="form-select" aria-label="Default select example">
+            <option selected>Choose the doctor from select menu:</option>
+           {%for doctor in doctors%}
+          <option value="{{doctor.id}}">{{doctor.name}}</option>
+            {% endfor %}
+        </select><br>
+
+        <label for="date">Enter the date of the aspiration:</label>
+        <input type="date" name="aspiration_date" class="form-control" ><br>
+
+        <input type="number" name="oocytes_number" class="form-control" placeholder="Enter the number of aspirated MII oocytes"><br>
+
+        <input type="number" name="fert_oocytes_number" class="form-control" placeholder="Enter the number of fertilized oocytes"><br>
+
+        <input type="submit" class="btn btn-success" value="Sent">
+    </form>
+</div>
+{% endblock %}

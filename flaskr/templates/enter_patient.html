@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Forming a database
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Enter the information about the patient</h1>
+    <form method="post">
+        <input type="text" name="name" id="name" class="form-control" placeholder="Enter name and surname"><br>
+        <textarea name="age" id="age" class="form-control" placeholder="Enter the age of the patient"></textarea><br>
+
+        <input type="submit" class="btn btn-success" value="Sent">
+    </form>
+</div>
+{% endblock %}

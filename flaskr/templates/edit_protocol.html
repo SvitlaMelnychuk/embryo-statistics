@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Editing in protocol
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>You can edit something, but be careful</h1>
+    <form method="post">
+
+         <select name="patient_id" class="form-select" aria-label="Default select example">
+           <option selected>Choose the patient from select menu:</option>
+            {%for patient in patients%}
+                {%if protocol.patient.id == patient.id %}
+                    <option selected value="{{patient.id}}">{{patient.name}}</option>
+                {% else %}
+                    <option value="{{patient.id}}">{{patient.name}}</option>
+                {% endif %}
+            {% endfor %}
+        </select><br>
+
+        <select name="embryologist_id" class="form-select" aria-label="Default select example">
+            <option selected>Choose the embryologist from select menu:</option>
+            {%for embryologist in embryologists%}
+                {%if protocol.embryologist.id == embryologist.id %}
+                    <option selected value="{{embryologist.id}}">{{embryologist.name}}</option>
+                {% else %}
+                    <option value="{{embryologist.id}}">{{embryologist.name}}</option>
+                {% endif %}
+            {% endfor %}
+        </select><br>
+
+        <select name="doctor_id" class="form-select" aria-label="Default select example">
+            <option selected>Choose the doctor from select menu:</option>
+           {%for doctor in doctors%}
+                {%if protocol.doctor.id == doctor.id %}
+                    <option selected value="{{doctor.id}}">{{doctor.name}}</option>
+                {% else %}
+                    <option  value="{{doctor.id}}">{{doctor.name}}</option>
+                {% endif %}
+            {% endfor %}
+        </select><br>
+
+        <label for="date">Enter the date of the aspiration:</label>
+        <input type="date" name="aspiration_date" class="form-control" value="{{protocol.aspiration_date}}"><br>
+
+        <input type="number" name="oocytes_number" class="form-control" value="{{protocol.oocytes_number}}"><br>
+
+        <input type="number" name="fert_oocytes_number" class="form-control" value="{{protocol.fert_oocytes_number}}"><br>
+
+
+
+        <input type="submit" class="btn btn-success" value="Update">
+
+
+
+    </form>
+</div>
+{% endblock %}

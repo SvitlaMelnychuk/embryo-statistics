@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Protocol information
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+
+<td><a class="btn btn-success" style="float: right;" href="/enter_protocol">Enter new protocol</a></td>
+
+
+<h1>Statistics from the protocols</h1>
+
+
+
+<div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">patient</th>
+              <th scope="col">embryologist</th>
+                <th scope="col">doctor</th>
+                <th scope="col">aspiration date</th>
+                <th scope="col">MII oocytes number</th>
+                <th scope="col">fertilized oocytes number</th>
+                <th scope="col">fertilization rate</th>
+              <th scope="col"></th>
+            </tr>
+        </thead>
+            <tbody>
+           {% if protocols|length > 0%}
+           {%for protocol in protocols%}
+
+            <tr>
+              <td>{{protocol.id}}</td>
+              <td>{{protocol.patient.name}}</td>
+              <td>{{protocol.embryologist.name}}</td>
+                <td>{{protocol.doctor.name}}</td>
+                <td>{{protocol.aspiration_date}}</td>
+                <td>{{protocol.oocytes_number}}</td>
+                <td>{{protocol.fert_oocytes_number}}</td>
+                <td>{{protocol.fertilization_rate}}</td>
+
+              <td><a class="btn btn-warning" href="/statistics/{{protocol.id}}/update">Edit</a></td>
+                <td><a href="/protocol_deleting/{{protocol.id}}/del" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a></td>
+
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+    {% else %}
+    <p>No protocols right now. </p>
+    {% endif %}
+</div>
+    {% endblock %}

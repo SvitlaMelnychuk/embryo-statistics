@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Editing info about embryologists
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>You can edit something</h1>
+    <form method="post">
+        <input type="text" name="name" id="name" class="form-control" value="{{ embryologist.name }}"><br>
+        <textarea name="work_clinic" id="work_clinic" class="form-control">{{ embryologist.work_clinic }}</textarea><br>
+        <textarea name="education" id="education" class="form-control" >{{ embryologist.education }}</textarea><br>
+        <input type="submit" class="btn btn-success" value="Update">
+    </form>
+</div>
+{% endblock %}
